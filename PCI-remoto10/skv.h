@@ -2,27 +2,15 @@
 #include <stdlib.h>
 #include <time.h>
 #include <locale.h>
+#include <string.h>
 
-char getss(char variavel[], int tamanho);
+#define ENTER 10
+
+char *scang();
 int geraNumerosAleat( int min, int max, int vetor[], int numElement);
 int Agrupar(int qtdNum, int rept, int vetor[], int result[]);
 int embaralhaVetor(int vetor[], int numElement);
 
-char getss(char variavel[], int tamanho){
-
-    char letra, i;
-
-    for ( i = 0; i < tamanho - 1; i++){
-        letra = getche();
-        if (letra == 13){
-            i = tamanho;
-        }else{
-            variavel[i] = letra;
-            variavel[i + 1] = '\0';
-        }
-    }
-    return variavel;
-}
 
 int geraNumerosAleat( int min, int max, int vetor[], int numElement){
 
@@ -77,4 +65,27 @@ int embaralhaVetor(int vetor[], int numElement){
         vetor[i] = embaralhado[i];
     }
     return vetor[numElement];
+}
+
+char *scang() {
+
+	int pos = 0;
+	char c;
+	char *p = malloc(1 * sizeof(char));
+		
+	fflush(stdin);
+	do {
+		c = getchar();
+
+		if(c != ENTER) {
+			p[pos] = c;
+			pos++;
+			p = realloc(p, (pos+1) * sizeof(char));
+		}
+
+	}while(c != ENTER);
+	
+	p[pos] = '\0';
+	
+	return p;
 }

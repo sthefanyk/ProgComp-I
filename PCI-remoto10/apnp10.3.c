@@ -6,7 +6,7 @@ int main(){
 
     srand(time(NULL));
 
-    int matriz[TAM][TAM], vetor[TAM * TAM];
+    int matriz[TAM][TAM], trasnp[TAM][TAM], vetor[TAM*TAM];
     int lin, col, lin2, col2;
     int i, j, k, aux;
 
@@ -27,28 +27,17 @@ int main(){
         printf("\n\t");
     }
 
-    for( lin = 0 ; lin < TAM ; lin++ ){ // ordena matriz
+    for( lin = 0 ; lin < TAM ; lin++ ){
         for( col = 0 ; col < TAM ; col++){
-
-            for( lin2 = 0 ; lin2 < TAM ; lin2++ ){
-                for( col2 = 0 ; col2 < TAM ; col2++){
-            
-                    if(matriz[lin][col] < matriz[lin2][col2]){
-                        aux = matriz[lin][col];
-                        matriz[lin][col] = matriz[lin2][col2];
-                        matriz[lin2][col2] = aux;
-
-                    }
-                }
-            }
+            trasnp[col][lin] = matriz[lin][col];
         }
     }
 
-    printf("\n\n - Matriz Ordenada:\n\n\t");
+    printf("\n\n - Matriz Transposta:\n\n\t");
 
     for( lin = 0 ; lin < TAM ; lin++ ){
         for( col = 0 ; col < TAM ; col++){
-            printf(" %d", matriz[lin][col]);
+            printf(" %d", trasnp[lin][col]);
         }
         printf("\n\t");
     }
